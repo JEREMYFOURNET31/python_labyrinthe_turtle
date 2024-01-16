@@ -1,0 +1,46 @@
+import turtle
+
+# Création d'un labyrinthe simple
+labyrinthe = [
+    "XXXXXXXXXXXXXXXXXXXX",
+    "X                  X",
+    "X XXXXXXXXXXXXXX  X",
+    "X X            X  X",
+    "X X XXXXXXXX   X  X",
+    "X X X      X   X  X",
+    "X X X  XXXXXXXX  X",
+    "X X X  X        XX",
+    "X X X  X  XXXXXXXX",
+    "X X XX  X X",
+    "X X     X X",
+    "X XXXXX   X",
+    "X        XX",
+    "XXXXXXXXXX"
+]
+
+# Fonction pour dessiner le labyrinthe
+def dessiner_labyrinthe():
+    turtle.speed(0)
+    turtle.hideturtle()
+    turtle.bgcolor("white")
+    turtle.title("Jeu du Labyrinthe")
+
+    for ligne in range(len(labyrinthe)):
+        for col in range(len(labyrinthe[ligne])):
+            turtle.penup()
+            turtle.goto(col * 20, 200 - ligne * 20)
+
+            if labyrinthe[ligne][col] == "X":
+                turtle.pendown()
+                turtle.fillcolor("black")
+                turtle.begin_fill()
+                for _ in range(4):
+                    turtle.forward(20)
+                    turtle.right(90)
+                turtle.end_fill()
+
+# Appel de la fonction pour dessiner le labyrinthe
+dessiner_labyrinthe()
+
+# Fenêtre principale
+turtle.mainloop()
